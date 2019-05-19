@@ -4,10 +4,12 @@ const app = express()
 const port = 3000
 
 const requestData = (req, res, next) => {
-  const nowDate = new Date().toLocaleString()
-  const path = req.url
-  const method = req.method
-  console.log(`${nowDate} | ${method} From ${path}`)
+  if (req.originalUrl.indexOf('favicon.ico') === -1) {
+    const nowDate = new Date().toLocaleString()
+    const path = req.url
+    const method = req.method
+    console.log(`${nowDate} | ${method} From ${path}`)
+  }
   next()
 }
 
